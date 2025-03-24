@@ -3,7 +3,7 @@ name: My first workflow
 on: push
 
 jobs:
-    ASCII_job:
+    build_job:
       runs-on: ubuntu-latest
 
       steps:
