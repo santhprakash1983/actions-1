@@ -29,10 +29,10 @@ jobs:
 
     deploy_job_3:
         needs: test_job_2
-        runs-on: ubunut-latest
+        runs-on: ubuntu-latest
         steps:
         - name: Read File
-          run: cat dragon.txt
+          run: cat dragon-text-file/dragon.txt
+
         - name: Deploy
-          run: echo Deployng... .. .
-          
+          run: echo Deploying... .. .
