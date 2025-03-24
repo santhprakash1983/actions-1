@@ -44,9 +44,6 @@ jobs:
         - name: List files after download (debug)
           run: ls -R
 
-        - name: Move artifact to current directory
-          run: mv dragon-text-file/dragon.txt .
-
         - name: Verify file exists
           run: ls -l dragon.txt
 
