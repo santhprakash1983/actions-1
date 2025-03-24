@@ -1,0 +1,27 @@
+name: Exploring Variables and Secrets
+
+on:
+    push
+
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Code
+          uses: actions/checkout@v3
+
+        - name: Docker Build
+          run: docker build -t docker.io/dockerUsername/imageName:latest .
+
+        - name: Docker Login
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username=gspvsr --password-stdin
+
+        - name: Docker Publish
+          run: docker push docker.io/dockerUsername/imageName:latest
+
+    deploy:
+        needs: docker
+        runs-on: ubuntu-latest
+        steps:
+        - name: Docker Run
+          run: docker run -d -p 8080:80 docker.io/dockerUsername/imageName:latest
