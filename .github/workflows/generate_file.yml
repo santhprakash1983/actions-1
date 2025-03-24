@@ -28,7 +28,7 @@ jobs:
             name: dragon-text-file
             path: .
 
-        - name: List files for debugging
+        - name: List files after download (debug)
           run: ls -R
 
     deploy_job_3:
@@ -41,11 +41,17 @@ jobs:
             name: dragon-text-file
             path: .
 
-        - name: List files to verify
+        - name: List files after download (debug)
           run: ls -R
 
+        - name: Move artifact to current directory
+          run: mv dragon-text-file/dragon.txt .
+
+        - name: Verify file exists
+          run: ls -l dragon.txt
+
         - name: Read File
-          run: cat dragon-text-file/dragon.txt
+          run: cat dragon.txt
 
         - name: Deploy
           run: echo Deploying... .. .
