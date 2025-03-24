@@ -31,8 +31,10 @@ jobs:
         needs: test_job_2
         runs-on: ubuntu-latest
         steps:
-        - name: Read File
-          run: cat dragon.txt
+        - name: Download the artifact
+          uses: actions/download-artifact@v4 
+          with:
+            name: dragon-text-file
 
         - name: Deploy
-          run: echo Deploying... .. .
+          run: cat dragon-text-file/dragon.txt
